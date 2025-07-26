@@ -1,4 +1,3 @@
-from ursina import Audio
 from ursina import camera
 from ursina import time
 from ursina import application
