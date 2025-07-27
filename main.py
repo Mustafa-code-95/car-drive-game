@@ -14,6 +14,7 @@ import random
 
 app = Ursina()
 
+stau = 1
 camera.orthographic = True
 camera.fov = 10
 
@@ -28,6 +29,9 @@ car_list = ['car0.png', 'car1.png', 'car2.png', 'car3.png', 'car4.png',
             'car5.png', 'car6.png', 'car7.png', 'car8.png', 'car9.png',
             'car10.png', 'car11.png', 'car12.png', 'car13.png']
 
+stau_text = Text(text=f'Stau: {stau}', origin=(0, 4), color=color.red, scale=2)
+feil1 = Entity(model='quad', texture='feil1.png', scale=1, position=(3, -2), collider='box')
+feil0 = Entity(model='quad', texture='feil.png', scale=1, position=(-3, -2), collider='box')
 player = Entity(model='cube', color=color.white, texture=car_list[car_index], scale=(1, 2), position=(0, 0), collider='box')
 feil_right = Entity(model='quad', texture='feil1.png', scale=1, position=(6, 0), collider='box')
 feil_left = Entity(model='quad', texture='feil.png', scale=1, position=(-6, 0), collider='box')
@@ -42,13 +46,14 @@ def add_car():
 
 
 def spawn_cars():
+    global stau
     if game_start and not game_over:
         add_car()
-        invoke(spawn_cars, delay=1)
+        invoke(spawn_cars, delay=stau)
 
 
 def update():
-    global game_start, game_over, car_index, mouse_clicked
+    global game_start, game_over, car_index, mouse_clicked, feil0, feil1, stau, stau_text
 
     if not game_start:
         if not mouse_clicked:
@@ -60,6 +65,11 @@ def update():
                 car_index = (car_index + 1) % len(car_list)
                 player.texture = car_list[car_index]
                 mouse_clicked = True
+            elif feil0.hovered and mouse.left:
+                if not stau == 0.1:
+                    stau -= 0.1
+                stau_text.text = f'Stau: {stau}'
+            
         if mouse_clicked and not mouse.left:
             mouse_clicked = False
 
