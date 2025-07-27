@@ -15,6 +15,7 @@ import random
 app = Ursina()
 
 stau = 1
+stau = int(stau)
 camera.orthographic = True
 camera.fov = 10
 
@@ -49,7 +50,8 @@ def spawn_cars():
     global stau
     if game_start and not game_over:
         add_car()
-        invoke(spawn_cars, delay=stau)
+        if stau != 0:
+            invoke(spawn_cars, delay=float(f'0.{stau}'))
 
 
 def update():
@@ -66,13 +68,14 @@ def update():
                 player.texture = car_list[car_index]
                 mouse_clicked = True
             elif feil0.hovered and mouse.left:
-                if not stau == 0.1:
-                    stau -= 0.1
+                if stau != 0:
+                    stau -= 1
                 stau_text.text = f'Stau: {stau}'
                 mouse_clicked = True
             elif feil1.hovered and mouse.left:
-                stau += 0.1
-                stau_text
+                stau += 1
+                stau_text.text = f'Stau: {stau}'
+                mouse_clicked = True
         if mouse_clicked and not mouse.left:
             mouse_clicked = False
 
