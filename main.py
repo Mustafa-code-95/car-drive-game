@@ -34,15 +34,18 @@ feil_left = Entity(model='quad', texture='feil.png', scale=1, position=(-6, 0), 
 
 mouse_clicked = False
 
+
 def add_car():
     x = random.randint(-8, 8)
     car = Entity(rotation_z=180, model='cube', color=color.white, texture=random.choice(car_list), scale=(1, 2), position=(x, 6), collider='box')
     cars.append(car)
 
+
 def spawn_cars():
     if game_start and not game_over:
         add_car()
         invoke(spawn_cars, delay=1)
+
 
 def update():
     global game_start, game_over, car_index, mouse_clicked
