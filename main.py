@@ -86,6 +86,9 @@ def update():
             game_start = True
             destroy(feil_left)
             destroy(feil_right)
+            destroy(feil0)
+            destroy(feil1)
+            destroy(stau_text)
             player.position = (0, -3.8)
             spawn_cars()
 
