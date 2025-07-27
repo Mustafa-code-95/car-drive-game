@@ -69,7 +69,10 @@ def update():
                 if not stau == 0.1:
                     stau -= 0.1
                 stau_text.text = f'Stau: {stau}'
-            
+                mouse_clicked = True
+            elif feil1.hovered and mouse.left:
+                stau += 0.1
+                stau_text
         if mouse_clicked and not mouse.left:
             mouse_clicked = False
 
