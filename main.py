@@ -84,7 +84,7 @@ def update():
                 cars.remove(car)
             elif player.intersects(car).hit:
                 game_over = True
-                a = Text(text='', origin=(0,0), scale=5, color=color.red)
+                a = Text(text='', origin=(0, 0), scale=5, color=color.red)
                 a.text = 'Game Over'
 
     else:
