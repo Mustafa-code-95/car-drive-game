@@ -37,7 +37,6 @@ mouse_clicked = False
 def add_car():
     x = random.randint(-8, 8)
     car = Entity(rotation_z=180, model='cube', color=color.white, texture=random.choice(car_list), scale=(1, 2), position=(x, 6), collider='box')
-    car.texture.rotation = 90
     cars.append(car)
 
 def spawn_cars():
