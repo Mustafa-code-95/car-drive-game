@@ -30,7 +30,7 @@ car_list = ['car0.png', 'car1.png', 'car2.png', 'car3.png', 'car4.png',
             'car5.png', 'car6.png', 'car7.png', 'car8.png', 'car9.png',
             'car10.png', 'car11.png', 'car12.png', 'car13.png']
 
-stau_text = Text(text=f'Stau: -{stau}', origin=(0, 4), color=color.red, scale=2)
+stau_text = Text(text=f'Stau: {9-stau}', origin=(0, 4), color=color.red, scale=2)
 feil1 = Entity(model='quad', texture='feil1.png', scale=1, position=(3, -2), collider='box')
 feil0 = Entity(model='quad', texture='feil.png', scale=1, position=(-3, -2), collider='box')
 player = Entity(model='cube', color=color.white, texture=car_list[car_index], scale=(1, 2), position=(0, 0), collider='box')
@@ -71,13 +71,13 @@ def update():
                 mouse_clicked = True
             elif feil0.hovered and mouse.left:
                 if stau != 1:
-                    stau -= 1
-                stau_text.text = f'Stau: -{stau}'
+                    stau += 1
+                stau_text.text = f'Stau: {9-stau}'
                 mouse_clicked = True
             elif feil1.hovered and mouse.left:
                 if stau != 9:
-                    stau += 1
-                stau_text.text = f'Stau: -{stau}'
+                    stau -= 1
+                stau_text.text = f'Stau: {9-stau}'
                 mouse_clicked = True
         if mouse_clicked and not mouse.left:
             mouse_clicked = False
