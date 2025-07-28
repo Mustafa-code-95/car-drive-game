@@ -70,12 +70,12 @@ def update():
                 player.texture = car_list[car_index]
                 mouse_clicked = True
             elif feil0.hovered and mouse.left:
-                if stau != 1:
+                if stau != 9:
                     stau += 1
                 stau_text.text = f'Stau: {9-stau}'
                 mouse_clicked = True
             elif feil1.hovered and mouse.left:
-                if stau != 9:
+                if stau != 1:
                     stau -= 1
                 stau_text.text = f'Stau: {9-stau}'
                 mouse_clicked = True
